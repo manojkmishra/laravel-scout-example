@@ -25,6 +25,7 @@ Route::get('/login/{provider}/callback', 'Auth\socialacctController@handleProvid
 
 // Search Routes for Laravel Scout
 Route::get('/posts/search', 'PostController@search')->name('posts.search');
+Route::get('/posts/searchjs', 'PostController@searchjs')->name('posts.searchjs');
 Route::resource('/posts', 'PostController');
 
 

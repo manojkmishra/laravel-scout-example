@@ -10,7 +10,7 @@ class PostController extends Controller
 {
     public function __construct()
     { //protect all things of post except show
-      $this->middleware('auth', ['except' => ['show','search']]);
+      $this->middleware('auth', ['except' => ['show','search','searchjs']]);
     }
     public function index()
     {
@@ -26,6 +26,10 @@ class PostController extends Controller
         $results = [];
       }
       return view('posts.search')->with('results', $results);
+    }
+    public function searchjs()
+    {
+      return view('posts.searchjs');
     }
     /**
      * Show the form for creating a new resource.
