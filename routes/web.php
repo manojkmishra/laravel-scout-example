@@ -22,4 +22,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/login/{provider}', 'Auth\socialacctController@redirectToProvider');
 Route::get('/login/{provider}/callback', 'Auth\socialacctController@handleProviderCallback');
 
+Route::resource('/posts', 'PostController');
+
 
