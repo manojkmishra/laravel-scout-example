@@ -39,4 +39,7 @@ class User extends Authenticatable
     public function accounts(){
         return $this->hasMany('App\socialacct');
     }
+    public function posts() {
+        return $this->hasMany('App\post');
+      }
 }
