@@ -10,12 +10,22 @@ class PostController extends Controller
 {
     public function __construct()
     { //protect all things of post except show
-      $this->middleware('auth', ['except' => ['show']]);
+      $this->middleware('auth', ['except' => ['show','search']]);
     }
     public function index()
     {
       $posts = post::paginate(25);
       return view('posts.index')->withPosts($posts);
+    }
+    public function search(Request $request)
+    { //return "aa";
+      if ($request->has('q')) {
+        $request->flashOnly('q');
+        $results = post::search($request->q)->paginate(15);
+      } else {
+        $results = [];
+      }
+      return view('posts.search')->with('results', $results);
     }
     /**
      * Show the form for creating a new resource.

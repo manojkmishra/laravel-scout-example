@@ -7,7 +7,8 @@
       {{ csrf_field() }}
 
       <div class="input-group">
-        <input type="text" name="q" class="form-control input-lg" placeholder="Search for a post..." value="{{ old('q') }}"/>
+        <input type="text" name="q" class="form-control input-lg" 
+        placeholder="Search for a post..." value="{{ old('q') }}"/>
         <span class="input-group-btn">
           <button class="btn btn-default btn-lg" type="submit">Search</button>
         </span>
@@ -31,7 +32,7 @@
       <div class="row">
         <div class="col-md-12">
           <p>
-            {{ str_limit($post->content, 250) }}
+          {{  \Illuminate\Support\Str::limit($post->content, 250) }}
           </p>
         </div>
       </div>
@@ -44,5 +45,8 @@
         {{ $results->links() }}
       </div>
     @endif
+
+    <pre>
+    {{dd($results)}}</pre>
   </div>
 @endsection
